@@ -41,7 +41,7 @@ router.get("/", async (req, res) => {
   }
 
   const blogs = await Blog.findAll({
-    attributes: { exclude: ["UserId"] },
+    attributes: { exclude: ["userId"] },
     include: {
       model: User,
       attributes: ["name"],
@@ -54,7 +54,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", tokenExtractor, async (req, res) => {
   const user = req.user;
-  const blog = await Blog.create({ ...req.body, UserId: user.id });
+  const blog = await Blog.create({ ...req.body, userId: user.id });
   return res.json(blog);
 });
 
@@ -65,7 +65,7 @@ const blogFinder = async (req, res, next) => {
 
 router.delete("/:id", blogFinder, tokenExtractor, async (req, res) => {
   const user = req.user;
-  if (user.id === req.blog.UserId) {
+  if (user.id === req.blog.userId) {
     await req.blog.destroy();
     res.status(204).end();
   } else {
@@ -75,7 +75,7 @@ router.delete("/:id", blogFinder, tokenExtractor, async (req, res) => {
 
 router.put("/:id", blogFinder, tokenExtractor, async (req, res) => {
   const user = req.user;
-  if (user.id === req.blog.UserId) {
+  if (user.id === req.blog.userId) {
     req.blog.likes = req.body.likes;
     await req.blog.save();
     res.json(req.blog);

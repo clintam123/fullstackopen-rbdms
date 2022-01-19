@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "thcujyelocgpld",
+    "password": "9d2daa614df35f6563d0e849ed72c08c048c9ffd913fccb090a007963c305a0f",
+    "database": "d9m745mbrid5pc",
+    "host": "ec2-34-225-103-117.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "ssl": true,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}

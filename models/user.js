@@ -28,7 +28,9 @@ User.init(
   },
   {
     sequelize,
-    modelName: "User",
+    underscored: true,
+    timestamps: true,
+    modelName: "user",
   }
 );
 
