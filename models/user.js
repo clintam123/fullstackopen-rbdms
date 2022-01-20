@@ -12,11 +12,11 @@ User.init(
     name: {
       type: DataTypes.TEXT,
       allowNull: false,
-      unique: true,
     },
     username: {
       type: DataTypes.TEXT,
       allowNull: false,
+      unique: true,
       validate: {
         isEmail: true,
       },
@@ -25,11 +25,14 @@ User.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    disabled: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     sequelize,
     underscored: true,
-    timestamps: true,
     modelName: "user",
   }
 );
